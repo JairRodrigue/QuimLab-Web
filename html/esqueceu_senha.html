@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esqueceu a Senha - QuimLab</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="background-preto2">
+
+    <div class="container">
+        <div class="logo-container">
+            <img src="/imagens/logo_sem_fundo.png" alt="Logo QuimLab" class="logo">
+            <h1 class="text-quim">Quim<span class="text-lab">Lab</span></h1>
+        </div>
+
+        <h2 class="text-login">Esqueceu a Senha?</h2>
+        
+        <form class="form">
+            <input type="email" id="editTextEmail" placeholder="E-mail cadastrado" class="input-roxo">
+            <button type="submit" id="buttonSendEmail" class="button-azul">Enviar Email</button>
+        </form>
+
+        <p class="login-redirect">Voltar ao <a href="login.html">Login</a></p>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        // Função para enviar email de recuperação de senha
+        $('#buttonSendEmail').click(function(event) {
+            event.preventDefault();
+            var email = $('#editTextEmail').val();
+            if (email) {
+                // A lógica para enviar o email de recuperação de senha vai aqui
+                alert('Instruções de recuperação de senha enviadas para ' + email);
+            } else {
+                alert('Por favor, insira um e-mail válido.');
+            }
+        });
+    </script>
+
+</body>
+</html>

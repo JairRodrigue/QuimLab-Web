@@ -1,0 +1,126 @@
+
+        /* Reset de estilos e variáveis */
+
+        @font-face {
+            font-family: 'Fonte';
+            src: url('/fonte/agency-fb/AGENCYB.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Fonte', sans-serif;
+        }
+
+        :root {
+            --roxo-padrao: #6200EE;
+            --azul-padrao: #0073cf;
+            --preto2: #0d051c;
+            --branco: #FFFFFF;
+            --branco-transparente: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Estilo do body */
+        body.background-preto2 {
+            background-color: var(--preto2);
+            color: var(--branco);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 90%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+
+        .text-quim {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--roxo-padrao);
+        }
+
+        .text-lab {
+            color: var(--azul-padrao);
+        }
+
+        .text-cadastro {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .input-roxo {
+            background-color: var(--roxo-padrao);
+            color: var(--branco);
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+        }
+
+        .input-roxo::placeholder {
+            color: var(--branco-transparente);
+        }
+
+        .button-azul {
+            background-color: var(--azul-padrao);
+            color: var(--branco);
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .button-azul:hover {
+            background-color: #005c99;
+        }
+
+        .login-redirect {
+            margin-top: 20px;
+            font-size: 1em;
+        }
+
+        .login-redirect a {
+            color: var(--branco);
+            text-decoration: underline;
+        }
+
+        .info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+            font-size: 1em;
+        }
+
+        .info-icon {
+            width: 20px;
+            height: 20px;
+        }

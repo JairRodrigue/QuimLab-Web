@@ -1,0 +1,225 @@
+/* Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  @font-face {
+    font-family: 'Fonte';
+    src: url('/fonte/agency-fb/AGENCYB.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+}
+
+/* Body */
+body {
+  font-family: 'Fonte', sans-serif;
+  color: #FFFFFF;
+  background-color: #0d051c;
+  padding-top: 56px; /* Espaçamento para a barra de navegação fixa */
+}
+
+/* Navbar */
+.navbar {
+  background-color: #0073cf; /* azul padrão */
+  padding: 1rem;
+  transition: background-color 0.3s ease;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Garante que a navbar fique sobre o conteúdo */
+}
+
+.navbar .navbar-logo img {
+  height: 50px;
+  transition: transform 0.3s;
+}
+
+.navbar .navbar-toggler {
+  border: none;
+}
+
+.navbar .navbar-toggler:focus {
+  outline: none;
+}
+
+.navbar .nav-item .nav-link {
+  color: #FFFFFF;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-item .nav-link:hover {
+  color: #010118; /* roxo padrão */
+}
+
+.navbar.nav-scroll {
+  background-color: #000000;
+}
+
+.nav-scroll .navbar-logo img {
+  transform: scale(0.9);
+}
+
+/* Banner */
+.banner {
+  position: relative;
+  text-align: left;
+  color: white;
+  padding: 4rem 0;
+  background: linear-gradient(to bottom, #0d051c, #000000); /* degrade preto2 para preto3 */
+}
+
+.banner-overlay {
+  background-color: rgba(13, 5, 28, 0.9);
+  padding: 4rem 0;
+}
+
+.banner-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #FFFFFF;
+}
+
+.banner-text h6 {
+  color: #9DFFFFFF;
+}
+
+.banner-text p {
+  margin: 1rem 0;
+  color: #FFFFFF;
+}
+
+.banner-text ul {
+  list-style-type: none;
+}
+
+.banner-text ul li {
+  display: inline;
+  margin-right: 1rem;
+}
+
+.banner img {
+  width: 100%;
+  max-width: 300px;
+}
+
+.svg-wave {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Section - About */
+.about {
+  padding: 4rem 0;
+  background-color: #0d051c;
+  text-align: center;
+}
+
+.sectioner-header h3 {
+  font-size: 2rem;
+  color: #FFFFFF;
+}
+
+.sectioner-header .line {
+  width: 50px;
+  height: 4px;
+  background-color: #0073cf;
+  margin: 0.5rem auto;
+}
+
+.section-content .icon-box {
+  margin: 2rem 0;
+}
+
+.section-content .icon-box i {
+  font-size: 2.5rem;
+  color: #0d051c;
+  margin-bottom: 0.5rem;
+}
+
+.section-content .icon-box h5 {
+  color: #FFFFFF;
+}
+
+.section-content .icon-box p {
+  color: #9DFFFFFF;
+}
+
+.about-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.75rem 2rem;
+  background-color: #0073cf;
+  color: #FFFFFF;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.about-btn:hover {
+  background-color: #0d051c;
+}
+
+/* Animations */
+.fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .navbar .nav-item {
+    text-align: center;
+  }
+
+  .banner-text h2 {
+    font-size: 2rem;
+  }
+
+  .banner img {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner-text h2 {
+    font-size: 1.75rem;
+  }
+
+  .banner-text p {
+    font-size: 0.9rem;
+  }
+}
+#content {
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .page-content {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  #content.fadeIn {
+    opacity: 1;
+  }
+  
+  #content.fadeOut {
+    opacity: 0;
+  }
+  
