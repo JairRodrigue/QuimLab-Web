@@ -24,7 +24,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="inicio.html" id="inicio">Início</a>
+            <a class="nav-link active" href="inicio.html" id="inicio">Início</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="comunidade.html" id="comunidade">Comunidade</a>
@@ -50,5 +50,20 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
   <script src="js/scrollIt.min.js"></script>
+  <script>
+    // Seleciona todas as abas de navegação
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Adiciona um evento de clique a cada aba
+    navLinks.forEach(link => {
+      link.addEventListener('click', function () {
+        // Remove a classe 'active' de todas as abas
+        navLinks.forEach(nav => nav.classList.remove('active'));
+
+        // Adiciona a classe 'active' à aba clicada
+        this.classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>

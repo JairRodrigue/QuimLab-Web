@@ -57,6 +57,11 @@ body {
   color: #010118; /* roxo padrão */
 }
 
+.navbar .nav-item .nav-link.active {
+  color: #000000; /* Texto preto para identificar a aba ativa */
+  font-weight: bold; /* (Opcional) Para destacar ainda mais */
+}
+
 .navbar.nav-scroll {
   background-color: #000000;
 }
