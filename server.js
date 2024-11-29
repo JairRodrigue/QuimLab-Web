@@ -1,3 +1,8 @@
+require("dotenv").config();
+
+const path = require("path");
+process.env.GOOGLE_APPLICATION_CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS || path.resolve(__dirname, "serviceAccountKey.json");
+
 const express = require("express");
 const rotasDeImagem = require("./rotas/rotasDeImagem"); 
 
