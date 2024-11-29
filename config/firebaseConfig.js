@@ -3,7 +3,7 @@ const serviceAccount = require("../serviceAccountKey.json");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    storageBucket: "seu-bucket-url",
+    storageBucket: "quimlab-b35f1.appspot.com",
 });
 
 const db = admin.firestore();
