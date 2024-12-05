@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../css/inicio.css">
+  <link rel="stylesheet" type="text/css" href="../css/arquivo.css">
 </head>
 <body class="background-preto2">
 
@@ -42,9 +43,32 @@
   <!-- Fim da Barra de Navegação -->
 
   <!-- Área de Conteúdo -->
-  <div id="content" class="container mt-5 pt-5">
-    <h1> Bem-Vindo ao QuimLab!</h1>
+  <div class="upload-box" id="uploadBox">
+    <p class="upload-text">Arraste e solte os arquivos aqui ou</p>
+    <button class="upload-button" onclick="document.getElementById('fileInput').click()">Selecionar Arquivos</button>
+    <input type="file" id="fileInput" class="upload-input" accept="application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/rtf,.rtf,application/vnd.ms-powerpoint,.ppt,application/vnd.openxmlformats-officedocument.presentationml.presentation,.pptx,text/plain,.txt,image/jpeg,.jpeg,.jpg,.jfif,image/png,.png,application/vnd.ms-excel,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,.xlsx" multiple>
   </div>
+
+  <script>
+    const uploadBox = document.getElementById('uploadBox');
+
+    // Funções de arrastar e soltar
+    uploadBox.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      uploadBox.classList.add('dragover');
+    });
+
+    uploadBox.addEventListener('dragleave', function() {
+      uploadBox.classList.remove('dragover');
+    });
+
+    uploadBox.addEventListener('drop', function(e) {
+      e.preventDefault();
+      uploadBox.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      document.getElementById('fileInput').files = files; // Simula o upload de arquivos
+    });
+  </script>
 
   <!-- Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
