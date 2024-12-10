@@ -1,4 +1,4 @@
-/* Reset */
+/* Reset */ 
 *,
 *::before,
 *::after {
@@ -11,7 +11,7 @@
     src: url('/fonte/agency-fb/AGENCYB.TTF') format('truetype');
     font-weight: normal;
     font-style: normal;
-}
+  }
 }
 
 /* Body */
@@ -26,7 +26,8 @@ body {
 .navbar {
   background-color: #0073cf; /* azul padrão */
   padding: 1rem;
-  transition: background-color 0.3s ease;
+  /* Removendo a transição do background-color */
+  transition: none !important;
   position: fixed;
   width: 100%;
   top: 0;
@@ -36,7 +37,7 @@ body {
 
 .navbar .navbar-logo img {
   height: 50px;
-  transition: transform 0.3s;
+  transition: none !important; /* Remove qualquer transição de animação */
 }
 
 .navbar .navbar-toggler {
@@ -63,11 +64,12 @@ body {
 }
 
 .navbar.nav-scroll {
-  background-color: #000000;
+  background-color: #000000; /* Aqui o fundo da navbar muda, mas sem animação */
 }
 
-.nav-scroll .navbar-logo img {
-  transform: scale(0.9);
+/* Remover transformação de escala na imagem do logo */
+.navbar.nav-scroll .navbar-logo img {
+  transform: none !important; /* Desativa qualquer transformação de escala */
 }
 
 /* Banner */
@@ -210,23 +212,21 @@ body {
     font-size: 0.9rem;
   }
 }
-#content {
-    position: relative;
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .page-content {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  #content.fadeIn {
-    opacity: 1;
-  }
-  
-  #content.fadeOut {
-    opacity: 0;
-  }
 
-  
-  
+#content {
+  position: relative;
+  transition: transform 0.5s ease-in-out;
+}
+
+.page-content {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#content.fadeIn {
+  opacity: 1;
+}
+
+#content.fadeOut {
+  opacity: 0;
+}
