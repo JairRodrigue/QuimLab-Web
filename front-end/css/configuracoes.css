@@ -14,6 +14,7 @@
   }
 }
 
+/* Variáveis de Cores */
 :root {
   --roxo-padrao: #6200EE;
   --roxo-claro: #8b5cf6;
@@ -31,15 +32,25 @@
 body {
   font-family: 'Fonte', sans-serif;
   color: var(--branco);
-  background: linear-gradient(135deg, var(--preto2), var(--cinza-escuro));
+  background-color: var(--preto2); /* Cor escura para o fundo de todo o site */
   font-smooth: always;
   padding-top: 70px;
 }
 
 /* Navbar */
-/* Barra de Navegação */
 .navbar {
-  background-color: #0073cf; /* Azul padrão */
+  background-color: var(--preto2); /* Usando um fundo escuro para a navbar */
+  padding: 1rem;
+  transition: background-color 0.3s ease;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  background-color: #0073cf; /* azul padrão */
   padding: 1rem;
   transition: background-color 0.3s ease;
   position: fixed;
@@ -48,6 +59,7 @@ body {
   left: 0;
   z-index: 1000; /* Garante que a navbar fique sobre o conteúdo */
 }
+
 
 .navbar .navbar-logo img {
   height: 50px;
@@ -78,7 +90,7 @@ body {
 }
 
 .navbar.nav-scroll {
-  background-color: #000000;
+  background-color: #000000; /* Mantendo o fundo preto mesmo ao rolar */
 }
 
 .nav-scroll .navbar-logo img {
@@ -91,7 +103,7 @@ body {
   text-align: left;
   color: var(--branco);
   padding: 4rem 0;
-  background: linear-gradient(to bottom, var(--preto2), var(--cinza-escuro));
+  background-color: var(--preto2); /* Fundo escuro uniforme para o banner */
 }
 
 .banner-overlay {
@@ -137,7 +149,7 @@ body {
 /* Section - About */
 .about {
   padding: 4rem 0;
-  background-color: var(--preto2);
+  background-color: var(--preto2); /* Fundo escuro para a seção */
   text-align: center;
 }
 
