@@ -5,56 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil - QuimLab</title>
     <link rel="icon" href="../imagens/logo_sem_fundo.png" type="image/x-icon">
+    
+    <!-- Incluindo Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Incluindo o CSS do Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Seu CSS personalizado -->
     <link rel="stylesheet" href="/front-end/css/perfil.css">
 </head>
-<body class="background-preto2">
+<body class="background-preto">  <!-- Apliquei a classe aqui para o fundo -->
 
-    <!-- Cabeçalho -->
-    <header class="profile-header">
-        <div class="logo-container">
-            <img src="../imagens/logo_sem_fundo.png" alt="Logo QuimLab" class="logo">
-            <h1 class="text-quim">Quim<span class="text-lab">Lab</span></h1>
-        </div>
-    </header>
-
-    <!-- Conteúdo do Perfil -->
+  <!-- Barra de Navegação -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-        <h2 class="profile-title">Perfil do Usuário</h2>
+      <a class="navbar-brand navbar-logo" href="inicio.html">
+        <img src="../imagens/logo.gif" alt="logo" class="logo-1">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fas fa-bars"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="inicio.html" id="inicio">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="comunidade.html" id="comunidade">Comunidade</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="configuracoes.html" id="configuracoes">Configurações</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="perfil.html" id="perfil">Perfil</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Fim da Barra de Navegação -->
 
-        <!-- Informações do Perfil -->
-        <div class="profile-info">
-            <img src="../imagens/default-avatar.png" alt="Foto de Perfil" class="profile-avatar">
-            <h3 class="profile-name">Nome do Usuário</h3>
-            <p class="profile-email">usuario@exemplo.com</p>
-        </div>
+  <!-- Conteúdo do Perfil -->
+  <div class="container" style="margin-top: 80px;">
+    <h2 class="profile-title">Perfil do Usuário</h2>
 
-        <!-- Detalhes do Perfil -->
-        <div class="profile-details">
-            <h3>Detalhes da Conta</h3>
-            <ul>
-                <li><strong>Nome:</strong> Nome do Usuário</li>
-                <li><strong>Email:</strong> usuario@exemplo.com</li>
-                <li><strong>Data de Cadastro:</strong> 01/01/2023</li>
-            </ul>
-        </div>
+    <!-- Informações do Perfil -->
+    <div class="profile-info">
+      <img src="../imagens/default-avatar.png" alt="Foto de Perfil" class="profile-avatar">
 
-        <!-- Preferências -->
-        <div class="profile-preferences">
-            <h3>Preferências</h3>
-            <ul>
-                <li><strong>Tema:</strong> Claro</li>
-                <li><strong>Notificações:</strong> Ativadas</li>
-            </ul>
-        </div>
-
-        <!-- Botões de Ação -->
-        <div class="profile-actions">
-            <button class="button-azul">Editar Perfil</button>
-            <button class="button-azul">Alterar Senha</button>
-            <button class="button-vermelho">Sair</button>
-        </div>
     </div>
 
-    <script src="../js/perfil.js"></script>
+    <!-- Detalhes do Perfil -->
+    <div class="profile-details">
+      <h3>Detalhes da Conta</h3>
+      <ul>
+        <li><strong>Nome:</strong> Nome do Usuário</li>
+        <li><strong>Email:</strong> usuario@exemplo.com</li>
+        <li><strong>Data de Cadastro:</strong> 01/01/2023</li>
+      </ul>
+    </div>
+
+    <!-- Preferências -->
+    <div class="profile-preferences">
+      <h3>Preferências</h3>
+      <ul>
+        <li><strong>Tema:</strong> Claro</li>
+        <li><strong>Notificações:</strong> Ativadas</li>
+      </ul>
+    </div>
+
+    <!-- Botões de Ação -->
+    <div class="profile-actions">
+      <button onclick="window.location.href='configuracoes.html';" class="alterar-btn">Alterar Perfil</button>
+      <button onclick="window.location.href='configuracoes.html';" class="alterar-btn">Alterar Senha</button>
+      <button onclick="window.location.href='login.html';" class="alterar-btn">Sair</button>
+    </div>
+  </div>
+  
+  <!-- Incluindo jQuery, Popper.js e Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="../js/perfil.js"></script>
 </body>
 </html>
