@@ -30,7 +30,7 @@ document.getElementById("buttonLogin").addEventListener("click", (e) => {
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Login bem-sucedido
-            window.location.href = "/html/inicio.html"; // Redireciona para a página inicial
+            window.location.href = "/front-end/html/inicio.html"; // Redireciona para a página inicial
         })
         .catch((error) => {
             // Em caso de erro, exibe uma mensagem apropriada
