@@ -7,7 +7,7 @@ genai.configure(api_key="AIzaSyDTG1Qi4Shsp0H2VFG0G5emNPFiNVxBcYI")
 model = genai.GenerativeModel("gemini-pro")
 
 # Solicitar um conteúdo (você pode alterar o texto conforme desejar)
-response = model.generate_content("o que é a água?")
+response = model.generate_content("por que água e óleo não se misturam?")
 
 # Exibir o conteúdo gerado
 print(response.text)
