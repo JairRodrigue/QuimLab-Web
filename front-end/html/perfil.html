@@ -48,38 +48,23 @@
 
   <!-- Conteúdo do Perfil -->
   <div class="container" style="margin-top: 80px;">
-    <h2 class="profile-title">Perfil do Usuário</h2>
+      <div class="profile-header">
+          <img class="profile-picture" src="../imagens/profile-pic.png" id="profile-pic">
+          <div class="profile-info">
+              <h2 id="user-name">Nome do Usuário</h2>
+              <p id="user-email">Email: </p>
+          </div>
 
-    <!-- Informações do Perfil -->
-    <div class="profile-info">
-      <img src="../imagens/default-avatar.png" alt="Foto de Perfil" class="profile-avatar">
-
-    </div>
-
-    <!-- Detalhes do Perfil -->
-    <div class="profile-details">
-      <h3>Detalhes da Conta</h3>
-      <ul>
-        <li><strong>Nome:</strong> Nome do Usuário</li>
-        <li><strong>Email:</strong> usuario@exemplo.com</li>
-        <li><strong>Data de Cadastro:</strong> 01/01/2023</li>
-      </ul>
-    </div>
-
-    <!-- Preferências -->
-    <div class="profile-preferences">
-      <h3>Preferências</h3>
-      <ul>
-        <li><strong>Tema:</strong> Claro</li>
-        <li><strong>Notificações:</strong> Ativadas</li>
-      </ul>
-    </div>
+  
 
     <!-- Botões de Ação -->
     <div class="profile-actions">
       <button onclick="window.location.href='configuracoes.html';" class="alterar-btn">Alterar Perfil</button>
       <button onclick="window.location.href='configuracoes.html';" class="alterar-btn">Alterar Senha</button>
-      <button onclick="window.location.href='login.html';" class="alterar-btn">Sair</button>
+      <a href="login.html" onclick="logout()">Sair</a>
+      <label for="profile-pic-upload">Alterar Foto de Perfil:</label>
+            <input type="file" id="profile-pic-upload" accept="image/*">
+            <button id="save-profile">Salvar Alterações</button>
     </div>
   </div>
   
@@ -88,6 +73,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <script src="../js/perfil.js"></script>
+  <script type="module"src="/js/perfil.js"></script>
 </body>
 </html>
