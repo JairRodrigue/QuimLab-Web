@@ -18,20 +18,20 @@
 body {
   font-family: 'Fonte', sans-serif;
   color: #FFFFFF;
-  background-color: #0d051c; /* Cor de fundo padrão */
-  padding-top: 56px; /* Espaçamento para a barra de navegação fixa */
+  background-color: #0d051c;
+  padding-top: 56px;
 }
 
 /* Barra de Navegação */
 .navbar {
-  background-color: #0073cf; /* Azul padrão */
+  background-color: #0073cf;
   padding: 1rem;
   transition: background-color 0.3s ease;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 1000; /* Garante que a navbar fique sobre o conteúdo */
+  z-index: 1000;
 }
 
 .navbar .navbar-logo img {
@@ -54,11 +54,11 @@ body {
 }
 
 .navbar .nav-item .nav-link:hover {
-  color: #010118; /* Cor de hover */
+  color: #010118;
 }
 
 .navbar .nav-item .nav-link.active {
-  color: #000000; /* Cor do item ativo */
+  color: #000000;
   font-weight: bold;
 }
 
@@ -70,22 +70,49 @@ body {
   transform: scale(0.9);
 }
 
-/* Caixa de Seções (Início, Comunidade, etc.) */
+.profile-actions {
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 20px;
+}
+
+/* Ajustando os botões para ficarem com cor estática */
+.profile-actions button,
+.profile-actions a {
+  background-color: #0073cf !important; /* Cor de fundo estática */
+  border: 1px solid #0073cf !important;
+  color: #FFFFFF !important; /* Cor do texto estática */
+}
+
+.profile-actions button:hover,
+.profile-actions a:hover {
+  background-color: #0073cf !important; /* Sem alteração no hover */
+  color: #FFFFFF !important; /* Cor do texto não muda no hover */
+}
+
+#profile-pic-upload {
+  background: none !important;
+  border: 1px solid #0073cf !important;
+  color: #FFFFFF !important;
+}
+
+/* Caixa de Seções */
 .section-box {
   display: flex;
-  justify-content: center;  /* Centraliza horizontalmente */
-  align-items: center;      /* Centraliza verticalmente */
+  justify-content: center;
+  align-items: center;
   padding: 2rem;
   margin-bottom: 2rem;
-  background-color: #1c1c1c;
+  background-color: transparent;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: none;
   transition: transform 0.3s ease;
 }
 
 .section-box:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: none;
 }
 
 .section-box .icon {
@@ -96,7 +123,7 @@ body {
 .section-box .text {
   flex: 1;
   margin-left: 1rem;
-  text-align: center;  /* Centraliza o texto dentro da seção */
+  text-align: center;
 }
 
 .section-box .text h3 {
@@ -109,27 +136,22 @@ body {
   font-size: 1rem;
 }
 
-/* Centralizando qualquer mensagem ou conteúdo */
-.center-content {
+/* Centralizando conteúdo */
+.center-content,
+.center-message,
+.message-box,
+.banner-text {
   display: flex;
-  justify-content: center;  /* Centraliza horizontalmente */
-  align-items: center;      /* Centraliza verticalmente */
-  height: 100vh;            /* Garante que o contêiner tenha altura total da tela */
-  text-align: center;       /* Centraliza o texto */
-}
-
-.center-content p {
-  color: #FFFFFF;
-  font-size: 1.25rem;
-  margin: 0; /* Remove margens indesejadas */
-}
-
-/* Centralizando título ou mensagem específica */
-.center-message {
-  display: flex;
-  justify-content: center;  /* Centraliza horizontalmente */
-  align-items: center;      /* Centraliza verticalmente */
+  justify-content: center;
+  align-items: center;
   text-align: center;
+}
+
+.center-content {
+  height: 100vh;
+}
+
+.center-message {
   margin-top: 2rem;
 }
 
@@ -138,26 +160,16 @@ body {
   color: #FFFFFF;
 }
 
-/* Centralizando texto em um bloco com altura específica */
 .message-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 300px;  /* Ajuste conforme necessário */
-  background-color: #1c1c1c;  /* Cor do fundo */
+  height: 300px;
+  background-color: transparent;
   color: #FFFFFF;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: none;
 }
 
-/* Centralizando conteúdo do Banner */
 .banner-text {
-  display: flex;
   flex-direction: column;
-  justify-content: center;  /* Centraliza verticalmente */
-  align-items: center;      /* Centraliza horizontalmente */
-  text-align: center;
   padding: 4rem 0;
   color: white;
 }
@@ -174,7 +186,7 @@ body {
   font-size: 1.125rem;
 }
 
-/* Animations */
+/* Animações */
 .fadeInUp {
   animation: fadeInUp 0.6s ease-out;
 }
@@ -190,7 +202,7 @@ body {
   }
 }
 
-/* Ajustes Responsivos */
+/* Responsividade */
 @media (max-width: 992px) {
   .navbar .nav-item {
     text-align: center;
@@ -236,7 +248,7 @@ body {
   }
 }
 
-/* Ajustes adicionais para animação e transição */
+/* Transições */
 #content {
   position: relative;
   transition: transform 0.5s ease-in-out;
