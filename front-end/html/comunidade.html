@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuimLab</title>
+  <title>Comunidade - QuimLab</title>
   <link rel="icon" href="../imagens/logo_sem_fundo.png" type="image/x-icon">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="../css/inicio.css">
+  <link rel="stylesheet" type="text/css" href="../css/comunidade.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body class="background-preto2">
 
@@ -42,14 +43,37 @@
   <!-- Fim da Barra de Navegação -->
 
   <!-- Área de Conteúdo -->
-  <div id="content" class="container mt-5 pt-5">
-    <p>Você está em Comunidade</p>
+  <div class="container mt-5 pt-5">
+    <div class="row">
+      <!-- Feed principal -->
+      <div class="col-md-7">
+        <div class="card mb-4">
+          <div class="card-body">
+            <textarea class="form-control" rows="3" placeholder="Publique no Quimlab!" id="tweetContent"></textarea>
+
+            <!-- Opção de enviar foto -->
+            <div class="form-group mt-3">
+              <label for="uploadPhoto" class="btn btn-primary btn-sm">
+                <i class="fas fa-camera"></i> Enviar Foto
+              </label>
+              <input type="file" id="uploadPhoto" class="form-control-file" accept="image/*" style="display: none;">
+            </div>
+            <button class="btn btn-primary mt-3" id="publishBtn">Publicar</button>
+          </div>
+        </div>
+
+        <!-- Área de Tweets (dinâmica) -->
+        <div id="tweetsArea">
+          <!-- Os tweets serão adicionados aqui dinamicamente -->
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  <script src="js/scrollIt.min.js"></script>
+  <script type="module" src="/js/comunidade.js"></script>
   <script>
     // Seleciona todas as abas de navegação
     const navLinks = document.querySelectorAll('.nav-link');
