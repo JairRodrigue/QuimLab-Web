@@ -1,12 +1,16 @@
-const admin = require("firebase-admin");
-const serviceAccount = require("../serviceAccountKey.json");
+import admin from "firebase-admin";
+import { readFile } from "fs/promises";
+
+const serviceAccount = JSON.parse(
+  await readFile(new URL("../serviceAccountKey.json", import.meta.url))
+);
 
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    storageBucket: "quimlab-b35f1.appspot.com",
+  credential: admin.credential.cert(serviceAccount),
+  storageBucket: "quimlab-b35f1.appspot.com",
 });
 
 const db = admin.firestore();
 const bucket = admin.storage().bucket();
 
-module.exports = { db, bucket };
+export { db, bucket };
