@@ -1,13 +1,15 @@
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
-const path = require("path");
-process.env.GOOGLE_APPLICATION_CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS || path.resolve(__dirname, "serviceAccountKey.json");
 
-const express = require("express");
-const rotasDeImagem = require("./rotas/rotasDeImagem"); 
+import { resolve } from "path";
+process.env.GOOGLE_APPLICATION_CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS || resolve(__dirname, "serviceAccountKey.json");
+
+import express, { json } from "express";
+import rotasDeImagem from "./rotas/rotasDeImagem.js"; 
 
 const app = express();
-app.use(express.json());
+app.use(json());
 
 // Use as rotas no endpoint "/api"
 app.use("/api", rotasDeImagem);
