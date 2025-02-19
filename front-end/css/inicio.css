@@ -13,6 +13,13 @@
     font-style: normal;
   }
 }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: auto; /* Garante que o scroll funcione */
+  scroll-behavior: smooth; /* Faz o scroll ser suave */
+}
 
 /* Body */
 body {
