@@ -7,7 +7,7 @@ genai.configure(api_key="AIzaSyDTG1Qi4Shsp0H2VFG0G5emNPFiNVxBcYI")
 model = genai.GenerativeModel("gemini-pro")
 
 # Solicitar um conteúdo (você pode alterar o texto conforme desejar)
-response = model.generate_content("por que água e óleo não se misturam?")
+response = model.generate_content("O peróxido de hidrogênio é um composto químico que pode se decompor, formando água e oxigênio, retorne essa equação corretamente balanceada")
 
 # Exibir o conteúdo gerado
 print(response.text)
