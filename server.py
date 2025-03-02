@@ -9,7 +9,7 @@ CORS(app)  # Permite requisições do front-end
 genai.configure(api_key="AIzaSyDTG1Qi4Shsp0H2VFG0G5emNPFiNVxBcYI")
 
 # Instanciar modelo Gemini
-model = genai.GenerativeModel("gemini-pro")
+model = genai.GenerativeModel("gemini-1.5-pro-latest")
 
 @app.route('/perguntar', methods=['POST'])
 def perguntar():
