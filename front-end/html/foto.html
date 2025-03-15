@@ -13,27 +13,43 @@
 </head>
 <body class="background-preto2">
 
-  <!-- Barra de Navegação -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+<!-- Barra de Navegação -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand navbar-logo" href="inicio.html">
         <img src="../imagens/logo-black.png" alt="logo" class="logo-1">
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="fas fa-bars"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a class="nav-link" href="inicio.html">Início</a></li>
-          <li class="nav-item"><a class="nav-link" href="duvidas.html">Dúvidas</a></li>
-          <li class="nav-item"><a class="nav-link" href="foto.html">Fotos</a></li>
-          <li class="nav-item"><a class="nav-link" href="configuracoes.html">Configurações</a></li>
-          <li class="nav-item"><a class="nav-link" href="perfil.html">Perfil</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="inicio.html" id="inicio">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="duvidas.html" id="comunidade">Dúvidas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="foto.html" id="Fotos">Fotos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="configuracoes.html" id="configuracoes">Configurações</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="perfil.html" id="perfil">Perfil</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
   <!-- Fim da Barra de Navegação -->
+
+<div class="upload-box mt-4" id="uploadBox">
+    <p class="upload-text">Arraste e solte os arquivos aqui ou</p>
+    <button class="upload-button" onclick="document.getElementById('fileInput').click()">Selecionar Arquivos</button>
+    <input type="file" id="fileInput" class="upload-input" multiple>
+  </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>

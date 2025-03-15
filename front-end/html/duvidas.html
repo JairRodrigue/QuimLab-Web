@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comunidade - QuimLab</title>
+  <title>Dúvidas - QuimLab</title>
   <link rel="icon" href="../imagens/logo_sem_fundo.png" type="image/x-icon">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="../css/comunidade.css">
+  <link rel="stylesheet" type="text/css" href="../css/duvidas.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="background-preto2">
@@ -28,7 +28,10 @@
             <a class="nav-link" href="inicio.html" id="inicio">Início</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="comunidade.html" id="comunidade">Comunidade</a>
+            <a class="nav-link active" href="duvidas.html" id="duvidas">Dúvidas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="foto.html" id="Fotos">Fotos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="configuracoes.html" id="configuracoes">Configurações</a>
@@ -42,38 +45,57 @@
   </nav>
   <!-- Fim da Barra de Navegação -->
 
-  <!-- Área de Conteúdo -->
+  <!-- Seção Tirar Dúvidas -->
   <div class="container mt-5 pt-5">
-    <div class="row">
-      <!-- Feed principal -->
-      <div class="col-md-7">
-        <div class="card mb-4">
-          <div class="card-body">
-            <textarea class="form-control" rows="3" placeholder="Publique no Quimlab!" id="tweetContent"></textarea>
-
-            <!-- Opção de enviar foto -->
-            <div class="form-group mt-3">
-              <label for="uploadPhoto" class="btn btn-primary btn-sm">
-                <i class="fas fa-camera"></i> Enviar Foto
-              </label>
-              <input type="file" id="uploadPhoto" class="form-control-file" accept="image/*" style="display: none;">
-            </div>
-            <button class="btn btn-primary mt-3" id="publishBtn">Publicar</button>
-          </div>
-        </div>
-
-        <!-- Área de Tweets (dinâmica) -->
-        <div id="tweetsArea">
-          <!-- Os tweets serão adicionados aqui dinamicamente -->
-        </div>
-      </div>
+    <h2 class="text-white text-center mb-4">Tire suas Dúvidas</h2>
+    <div class="card p-4">
+      <input type="text" id="pergunta" class="form-control mb-3" placeholder="Digite sua dúvida...">
+      <button class="btn btn-primary" onclick="buscarResposta()">Perguntar</button>
+      <div id="resposta" class="mt-3 p-3 bg-light text-dark border rounded"></div>
     </div>
   </div>
+  <!-- Fim da Seção Tirar Dúvidas -->
+
+
+  <script>
+    function buscarResposta() {
+      const pergunta = document.getElementById('pergunta').value;
+      if (pergunta.trim() === '') {
+        document.getElementById('resposta').innerText = 'Por favor, digite uma dúvida.';
+        return;
+      }
+    
+      document.getElementById('resposta').innerText = 'Buscando resposta...';
+    
+      fetch('http://127.0.0.1:5000/perguntar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ pergunta: pergunta })
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('resposta').innerText = data.resposta;
+      })
+      .catch(error => {
+        console.error('Erro ao buscar resposta:', error);
+        document.getElementById('resposta').innerText = 'Erro ao obter resposta.';
+      });
+    }
+    
+  </script>
+
+
+<div class="container mt-4">
+  <h3 class="text-white text-center">Histórico de Perguntas</h3>
+  <div id="historico" class="p-3 bg-light text-dark border rounded"></div>
+</div>
 
   <!-- Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  <script type="module" src="/js/comunidade.js"></script>
+  <script type="module" src="/js/historico.js"></script>
   <script>
     // Seleciona todas as abas de navegação
     const navLinks = document.querySelectorAll('.nav-link');
