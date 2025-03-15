@@ -47,6 +47,16 @@ body {
   transition: none !important; /* Remove qualquer transição de animação */
 }
 
+.box-container {
+  background: white; 
+  color: black; 
+  padding: 20px; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 20px auto; 
+  max-width: 800px; 
+}
+
 .navbar .navbar-toggler {
   border: none;
 }
