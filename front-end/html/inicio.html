@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuimLab</title>
+  <title>QuimLab - Tirar Dúvidas</title>
   <link rel="icon" href="../imagens/logo_sem_fundo.png" type="image/x-icon">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../css/inicio.css">
   <link rel="stylesheet" type="text/css" href="../css/arquivo.css">
@@ -19,75 +19,110 @@
       <a class="navbar-brand navbar-logo" href="inicio.html">
         <img src="../imagens/logo-black.png" alt="logo" class="logo-1">
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
         <span class="fas fa-bars"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="inicio.html" id="inicio">Início</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="comunidade.html" id="comunidade">Comunidade</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="configuracoes.html" id="configuracoes">Configurações</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="perfil.html" id="perfil">Perfil</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="inicio.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="comunidade.html">Comunidade</a></li>
+          <li class="nav-item"><a class="nav-link" href="configuracoes.html">Configurações</a></li>
+          <li class="nav-item"><a class="nav-link" href="perfil.html">Perfil</a></li>
         </ul>
       </div>
     </div>
   </nav>
   <!-- Fim da Barra de Navegação -->
 
-  <!-- Área de Conteúdo -->
-  <div class="upload-box" id="uploadBox">
+  <!-- Seção Tirar Dúvidas -->
+  <div class="container mt-5 pt-5">
+    <h2 class="text-white text-center mb-4">Tire suas Dúvidas</h2>
+    <div class="card p-4">
+      <input type="text" id="pergunta" class="form-control mb-3" placeholder="Digite sua dúvida...">
+      <button class="btn btn-primary" onclick="buscarResposta()">Perguntar</button>
+      <div id="resposta" class="mt-3 p-3 bg-light text-dark border rounded"></div>
+    </div>
+  </div>
+  <!-- Fim da Seção Tirar Dúvidas -->
+
+  <!-- Box de Upload de Arquivos -->
+  <div class="upload-box mt-4" id="uploadBox">
     <p class="upload-text">Arraste e solte os arquivos aqui ou</p>
     <button class="upload-button" onclick="document.getElementById('fileInput').click()">Selecionar Arquivos</button>
-    <input type="file" id="fileInput" class="upload-input" accept="application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/rtf,.rtf,application/vnd.ms-powerpoint,.ppt,application/vnd.openxmlformats-officedocument.presentationml.presentation,.pptx,text/plain,.txt,image/jpeg,.jpeg,.jpg,.jfif,image/png,.png,application/vnd.ms-excel,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,.xlsx" multiple>
+    <input type="file" id="fileInput" class="upload-input" multiple>
   </div>
 
   <script>
-    const uploadBox = document.getElementById('uploadBox');
-
-    // Funções de arrastar e soltar
-    uploadBox.addEventListener('dragover', function(e) {
-      e.preventDefault();
-      uploadBox.classList.add('dragover');
-    });
-
-    uploadBox.addEventListener('dragleave', function() {
-      uploadBox.classList.remove('dragover');
-    });
-
-    uploadBox.addEventListener('drop', function(e) {
-      e.preventDefault();
-      uploadBox.classList.remove('dragover');
-      const files = e.dataTransfer.files;
-      document.getElementById('fileInput').files = files; // Simula o upload de arquivos
-    });
-  </script>
-
-  <!-- Scripts -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  <script src="js/scrollIt.min.js"></script>
-  <script>
-    // Seleciona todas as abas de navegação
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    // Adiciona um evento de clique a cada aba
-    navLinks.forEach(link => {
-      link.addEventListener('click', function () {
-        // Remove a classe 'active' de todas as abas
-        navLinks.forEach(nav => nav.classList.remove('active'));
-
-        // Adiciona a classe 'active' à aba clicada
-        this.classList.add('active');
+    function buscarResposta() {
+      const pergunta = document.getElementById('pergunta').value;
+      if (pergunta.trim() === '') {
+        document.getElementById('resposta').innerText = 'Por favor, digite uma dúvida.';
+        return;
+      }
+    
+      document.getElementById('resposta').innerText = 'Buscando resposta...';
+    
+      fetch('http://127.0.0.1:5000/perguntar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ pergunta: pergunta })
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('resposta').innerText = data.resposta;
+      })
+      .catch(error => {
+        console.error('Erro ao buscar resposta:', error);
+        document.getElementById('resposta').innerText = 'Erro ao obter resposta.';
       });
-    });
+    }
+    
   </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+  
+    const firebaseConfig = {
+      apiKey: "AIzaSyAHwBhe-JQDNkbgr5wF-Ap8eWbHRw8tqzc",
+      authDomain: "quimlab-b35f1.firebaseapp.com",
+      databaseURL: "https://quimlab-b35f1-default-rtdb.firebaseio.com",
+      projectId: "quimlab-b35f1",
+      storageBucket: "quimlab-b35f1.appspot.com",
+      messagingSenderId: "847530528705",
+      appId: "1:847530528705:web:8ecce3728d69b9b0b06940",
+      measurementId: "G-0LBVK3RHRC"
+    };
+  
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+  
+    async function carregarHistorico() {
+      const querySnapshot = await getDocs(collection(db, "perguntas_respostas"));
+      let historicoHTML = "";
+      
+      querySnapshot.forEach((doc) => {
+        const dados = doc.data();
+        historicoHTML += `<div class="p-2 border-bottom">
+                            <strong>Pergunta:</strong> ${dados.pergunta} <br>
+                            <strong>Resposta:</strong> ${dados.resposta}
+                          </div>`;
+      });
+  
+      document.getElementById("historico").innerHTML = historicoHTML;
+    }
+  
+    window.onload = carregarHistorico;
+  </script>
+  
+  <div class="container mt-4">
+    <h3 class="text-white text-center">Histórico de Perguntas</h3>
+    <div id="historico" class="p-3 bg-light text-dark border rounded"></div>
+  </div>
+  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 </body>
 </html>
