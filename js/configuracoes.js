@@ -1,8 +1,7 @@
 // Importando Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
-import { getAuth, onAuthStateChanged, updateEmail } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import { getAuth, onAuthStateChanged, updateEmail, updatePassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
 // Configuração do Firebase
 const firebaseConfig = {
@@ -18,7 +17,6 @@ const firebaseConfig = {
 
 // Inicializando Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
@@ -29,27 +27,33 @@ async function salvarConfiguracoes(user) {
   const senha = document.getElementById("senha").value;
   const confirmarSenha = document.getElementById("confirmar-senha").value;
   const notificacoes = document.getElementById("notificacoes").checked;
-  const temaClaro = document.getElementById("tema-claro").checked;
-  const temaEscuro = document.getElementById("tema-escuro").checked;
 
   // Validação dos campos
-  if (!nome || !novoEmail || !senha || !confirmarSenha) {
+  if (!nome || !novoEmail) {
     alert("Por favor, preencha todos os campos obrigatórios.");
     return;
   }
 
-  if (senha !== confirmarSenha) {
+  if (senha && senha !== confirmarSenha) {
     alert("As senhas não coincidem.");
     return;
   }
 
-  // Atualizar email no Firebase Authentication
   try {
-    await updateEmail(user, novoEmail);
-    console.log(" Email atualizado com sucesso!");
+    // Atualizar e-mail no Firebase Authentication
+    if (novoEmail !== user.email) {
+      await updateEmail(user, novoEmail);
+      console.log("Email atualizado com sucesso!");
+    }
+
+    // Atualizar senha no Firebase Authentication
+    if (senha) {
+      await updatePassword(user, senha);
+      console.log("Senha atualizada com sucesso!");
+    }
   } catch (error) {
-    console.error(" Erro ao atualizar email:", error);
-    alert("Erro ao atualizar email.");
+    console.error("Erro ao atualizar dados do usuário:", error);
+    alert("Erro ao atualizar os dados. Faça login novamente e tente novamente.");
     return;
   }
 
@@ -57,14 +61,11 @@ async function salvarConfiguracoes(user) {
   const configuracoes = {
     nome: nome,
     email: novoEmail,
-    senha: senha,
-    notificacoes: notificacoes,
-    tema: temaClaro ? "claro" : (temaEscuro ? "escuro" : "claro"),
+    notificacoes: notificacoes
   };
 
-  // Salvando configurações no Firestore usando UID como identificador
   try {
-    await setDoc(doc(db, "usuarios", user.uid), configuracoes);
+    await setDoc(doc(db, "usuarios", user.uid), configuracoes, { merge: true });
     alert("Configurações salvas com sucesso!");
     window.location.href = "login.html";
   } catch (error) {
@@ -76,14 +77,26 @@ async function salvarConfiguracoes(user) {
 // Verifica se o usuário está autenticado e adiciona evento ao formulário
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    console.log(" Usuário autenticado:", user.uid);
+    console.log("Usuário autenticado:", user.uid);
     document.querySelector(".config-form").addEventListener("submit", (e) => {
       e.preventDefault();
       salvarConfiguracoes(user);
     });
   } else {
-    console.error(" Nenhum usuário autenticado.");
+    console.error("Nenhum usuário autenticado.");
     alert("Usuário não autenticado. Redirecionando para login.");
     window.location.href = "login.html";
   }
+});
+
+// Função para logout
+document.getElementById("logout-btn").addEventListener("click", () => {
+  signOut(auth)
+    .then(() => {
+      alert("Você saiu da sua conta.");
+      window.location.href = "login.html";
+    })
+    .catch((error) => {
+      console.error("Erro ao sair:", error);
+    });
 });

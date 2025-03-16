@@ -32,13 +32,7 @@ async function loadProfileData(userId) {
 
             if (userData.imageUrl) {
                 console.log("🖼️ URL da imagem salva no Firestore:", userData.imageUrl);
-                const profilePicRef = ref(storage, userData.imageUrl);
-                try {
-                    const url = await getDownloadURL(profilePicRef);
-                    document.getElementById('profile-pic').src = url;
-                } catch (error) {
-                    console.warn("Erro ao carregar imagem:", error);
-                }
+                document.getElementById('profile-pic').src = userData.imageUrl;
             }
         } else {
             console.warn("Usuário não encontrado no Firestore.");
@@ -64,15 +58,15 @@ document.getElementById("save-profile").addEventListener("click", async () => {
     const file = fileInput.files[0];
 
     if (file && user) {
-        // Crie um nome único para a foto
-        const storageRef = ref(storage, "profile_pictures/" + user.uid + "_" + Date.now());
+        // Cria um nome único para a foto
+        const fileName = `profile_pictures/${user.uid}_${Date.now()}`;
+        const storageRef = ref(storage, fileName);
 
-        // Faça o upload do arquivo para o Firebase Storage
+        // Faz o upload do arquivo para o Firebase Storage
         const uploadTask = uploadBytesResumable(storageRef, file);
 
         uploadTask.on("state_changed", 
             (snapshot) => {
-                // Aqui você pode monitorar o progresso do upload (opcional)
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 console.log("Progresso do upload: " + progress + "%");
             }, 
@@ -80,13 +74,13 @@ document.getElementById("save-profile").addEventListener("click", async () => {
                 console.error("Erro no upload da imagem:", error);
             }, 
             async () => {
-                // O upload foi concluído com sucesso, agora obtém a URL da imagem
+                // Obtém a URL da imagem
                 const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
                 console.log("Imagem carregada com sucesso:", downloadURL);
 
                 // Atualiza a URL da imagem no Firestore
                 await updateDoc(doc(db, "usuarios", user.uid), {
-                    imageUrl: "profile_pictures/" + user.uid + "_" + Date.now()
+                    imageUrl: downloadURL
                 });
 
                 // Atualiza a imagem de perfil na página
@@ -100,12 +94,17 @@ document.getElementById("save-profile").addEventListener("click", async () => {
     }
 });
 
-// Função para fazer logout
-document.querySelector(".alterar-btn[href='login.html']").addEventListener("click", (e) => {
+// Função para fazer logout corretamente
+document.getElementById("logout-btn").addEventListener("click", (e) => {
     e.preventDefault();
     signOut(auth).then(() => {
         alert("Você saiu da sua conta.");
         window.location.href = "login.html";
+        // Impede que o usuário volte para a página anterior
+        history.pushState(null, null, "login.html");
+        window.addEventListener("popstate", function () {
+            history.pushState(null, null, "login.html");
+        });
     }).catch((error) => {
         console.error("Erro ao sair:", error);
     });
