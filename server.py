@@ -14,7 +14,7 @@ genai.configure(api_key="AIzaSyDTG1Qi4Shsp0H2VFG0G5emNPFiNVxBcYI")
 model = genai.GenerativeModel("gemini-1.5-pro-latest")
 
 # Configurar Firebase
-cred = credentials.Certificate("quimlab-b35f1-firebase-adminsdk-qn8be-6379db854e.json")  # Substitua pelo caminho do seu arquivo JSON
+cred = credentials.Certificate("quimlab-b35f1-firebase-adminsdk-qn8be-6379db854e.json")  
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 

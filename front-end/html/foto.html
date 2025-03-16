@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,15 +12,17 @@
   <link rel="stylesheet" type="text/css" href="../css/inicio.css">
   <link rel="stylesheet" type="text/css" href="../css/arquivo.css">
 </head>
+
 <body class="background-preto2">
 
-<!-- Barra de Navegação -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <!-- Barra de Navegação -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand navbar-logo" href="inicio.html">
         <img src="../imagens/logo-black.png" alt="logo" class="logo-1">
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="fas fa-bars"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -45,13 +48,21 @@
   </nav>
   <!-- Fim da Barra de Navegação -->
 
-<div class="upload-box mt-4" id="uploadBox">
+  <div class="upload-box" id="uploadBox">
     <p class="upload-text">Arraste e solte os arquivos aqui ou</p>
-    <button class="upload-button" onclick="document.getElementById('fileInput').click()">Selecionar Arquivos</button>
-    <input type="file" id="fileInput" class="upload-input" multiple>
-  </div>
+    <button class="upload-button" onclick="clickUploadButton()">Selecionar Arquivos</button>
+    <input type="file" id="fileInput" class="upload-input" accept="image/*">
 
+    <div id="preview"></div>
+  </div>
+  
+  <button id="sendButton" class="send-button">Enviar Imagem</button>
+
+  <div id="responseBox" class="response-box" style="display: none;"></div>
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="../../js/arquivo.js"></script>
 </body>
+
 </html>
