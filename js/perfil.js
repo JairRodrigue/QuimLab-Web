@@ -102,9 +102,6 @@ document.getElementById("logout-btn").addEventListener("click", (e) => {
         window.location.href = "login.html";
         // Impede que o usuário volte para a página anterior
         history.pushState(null, null, "login.html");
-        window.addEventListener("popstate", function () {
-            history.pushState(null, null, "login.html");
-        });
     }).catch((error) => {
         console.error("Erro ao sair:", error);
     });
