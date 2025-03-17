@@ -8,7 +8,7 @@ const rota = express.Router();
 const upload = multer({ storage: multer.memoryStorage() });
 
 rota.use(cors({
-    origin: "http://127.0.0.1:5500", // Se a porta do front-end mudar, tem que mudar aqui
+    origin: "http://127.0.0.1:5501", // Se a porta do front-end mudar, tem que mudar aqui
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"]
 }));
